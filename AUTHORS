@@ -1,4 +1,3 @@
-
 Credits
 =======
 
@@ -15,5 +14,6 @@ Other contributors, listed alphabetically, are:
 * Miah Johnson - Fixed download binary packages from Oracle.
 * onlymostlydead - Fixed downloading from Oracle (again).
 * Thorsten Möllers - Fixed git cloning for users behind restrictive firewalls.
+* thenameisnigel - Fixing Oracle issue...again.
 
 Many thanks for all contributions!
