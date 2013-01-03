@@ -2,6 +2,14 @@
 History
 =======
 
+1.0.0
+-----
+
+* Fix almost every problem wrong with the script.
+
+	* Closes: Every GitHub issue.
+
+
 0.2.6
 -----
 

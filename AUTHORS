@@ -1,19 +1,4 @@
 Credits
 =======
 
-This package is written and maintained by Martin Wimpress, <code@flexion.org>
-
-Other contributors, listed alphabetically, are:
-
-* Derek Chen-Becker - Added an option to skip rebuilding packages.
-* Eshwar Andhavarapu - Added comments in the apt source file.
-* Hannes Schmidt - Added an option to use a pre-existing signing key.
-* Jameson J Lee - Added support for JCE Unlimited Strength Jurisdiction Policy Files and fixed downloading from Oracle (yet again).
-* Ladios Jonquil - Added support for JCE Unlimited Strength Jurisdiction Policy Files and fixed downloading from Oracle (yet again).
-* Martin Polden - Fixed download binary packages from Oracle.
-* Miah Johnson - Fixed download binary packages from Oracle.
-* onlymostlydead - Fixed downloading from Oracle (again).
-* Thorsten Möllers - Fixed git cloning for users behind restrictive firewalls.
-* thenameisnigel - Fixing Oracle issue...again.
-
-Many thanks for all contributions!
+This package is written and maintained by Ryan Norris, <r.nigel.norris@gmail.com>
