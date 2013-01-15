@@ -30,8 +30,8 @@ echo Lets unpack Java now...
 echo
 echo
 echo Java has been unpacked. Please hold on...
-mkdir -p /usr/lib/jvm/
-mv jdk1.6.0_38 /usr/lib/jvm/jdk1.6.0_38
+mkdir -p /usr/bin/jvm/
+mv jdk1.6.0_38 /usr/bin/jvm/jdk1.6.0_38
 echo
 echo
 echo
