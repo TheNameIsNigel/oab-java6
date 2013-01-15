@@ -19,6 +19,13 @@ echo Ill be pulling the files from my GitHub necessary to install Java...
 echo
 echo 
 wget https://github.com/thenameisnigel/oab-java6/raw/master/java6/jdk1.6.0_38/jdk-6u38-linux-x64.bin
+if error then echo GitHub doesnt like big balls I mean blobs so lets try
+echo another source...
+wget http://www.dropbox.com
+if error then echo Dammit DropBox hating also. One last time...
+wget http://www.mediafire.com
+if error then echo This isn't going to work out...its not you
+echo its me.
 echo Download Completed, lets set some permissions...
 chmod a+x jdk-6u38-linux-x64.bin
 echo
