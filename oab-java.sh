@@ -58,4 +58,5 @@ echo
 echo
 echo Congrats, Java is installed. Now lets test it...
 java -version
-Test complete.
+echo Test complete.
+echo Enjoy Java!
