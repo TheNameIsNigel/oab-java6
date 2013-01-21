@@ -44,7 +44,7 @@ update-alternatives --config javac 1
 update-alternatives --config java 1
 update-alternatives --config javaws 1
 ls -la /etc/alternatives/java*
-JAVA_HOME=/usr/lib/jvm/jdk1.6.0_38
+JAVA_HOME=/usr/bin/jvm/jdk1.6.0_38
 MOZILLA_HOME=~/.mozilla
 mkdir $MOZILLA_HOME/plugins
 ln -s $JAVA_HOME/jre/lib/amd64/libnpjp2.so $MOZILLA_HOME/plugins
