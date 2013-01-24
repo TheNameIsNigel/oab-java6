@@ -1,6 +1,7 @@
 echo This script was made by Ryan Norris. Please do not edit this script.
 echo By running this script, you agree with the terms and conditions set forth by
 echo Oracle.
+wait
 echo
 echo
 echo
@@ -10,12 +11,14 @@ echo
 echo
 echo
 echo
-echo This should download the latest version of Java 6. Java 6 is required
+echo This should download the latest version of Java 8. Java 8 is required
 echo by many applications for compatibility reasons and to build
-echo Android. There will be a Java 7 version soon.
+echo Android. Java 8 oab is still an alpha script and should
+echo not be used in production enviroments until a safer method
+echo is created.
 echo
 echo
-echo Ill be pulling the files from my GitHub necessary to install Java...
+echo Ill be pulling the files from my Skybox necessary to install Java...
 echo
 echo 
 wget https://dl.dropbox.com/s/99el407p85b2bzd/jdk-6u38-linux-x64.bin?dl=1
