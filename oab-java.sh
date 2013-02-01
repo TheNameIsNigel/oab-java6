@@ -30,21 +30,21 @@ echo Lets unpack Java now...
 echo
 echo
 echo Java has been unpacked. Please hold on...
-mkdir -p /usr/bin/jvm/
-mv jdk1.6.0_38 /usr/bin/jvm/jdk1.6.0_38
+mkdir -p /usr/lib/jvm/
+mv jdk1.6.0_38 /usr/lib/jvm/jdk1.6.0_38
 echo
 echo
 echo
 echo Okay, the hard part is done. Lets set Oracle Java as the default
 echo java.
-update-alternatives --install /usr/bin/javac javac /usr/bin/jvm/jdk1.6.0_38/bin/javac 1
-update-alternatives --install /usr/bin/java java /usr/bin/jvm/jdk1.6.0_38/bin/java 1
-update-alternatives --install /usr/bin/javaws javaws /usr/bin/jvm/jdk1.6.0_38/bin/javaws 1
+update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.6.0_38/bin/javac 1
+update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.6.0_38/bin/java 1
+update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.6.0_38/bin/javaws 1
 update-alternatives --config javac 1
 update-alternatives --config java 1
 update-alternatives --config javaws 1
 ls -la /etc/alternatives/java*
-JAVA_HOME=/usr/bin/jvm/jdk1.6.0_38
+JAVA_HOME=/usr/lib/jvm/jdk1.6.0_38
 MOZILLA_HOME=~/.mozilla
 mkdir $MOZILLA_HOME/plugins
 ln -s $JAVA_HOME/jre/lib/amd64/libnpjp2.so $MOZILLA_HOME/plugins
