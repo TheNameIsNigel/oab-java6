@@ -15,7 +15,7 @@ echo by many applications for compatibility reasons and to build
 echo Android. There will be a Java 7 version soon.
 echo
 echo
-echo Ill be pulling the files from my GitHub necessary to install Java...
+echo Ill be pulling the files from my Dropbox necessary to install Java...
 echo
 echo 
 wget https://dl.dropbox.com/s/99el407p85b2bzd/jdk-6u38-linux-x64.bin?dl=1
