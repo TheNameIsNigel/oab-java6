@@ -1,7 +1,13 @@
+echo Java 6 Downloader for Linux
+echo Copyright 2013 Norris Enterprises
+echo
 echo This script was made by Ryan Norris. Please do not edit this script.
 echo By running this script, you agree with the terms and conditions set forth by
 echo Oracle.
 echo
+clear
+echo Do you accept these terms and conditions
+wait
 echo
 echo
 echo Initializing, please wait...
