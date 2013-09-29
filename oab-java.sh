@@ -6,8 +6,10 @@ echo By running this script, you agree with the terms and conditions set forth b
 echo Oracle.
 echo
 clear
-echo Do you accept these terms and conditions
-wait
+echo Please wait while we intialize the application...
+sleep 10
+echo
+clear
 echo
 echo
 echo Initializing, please wait...
