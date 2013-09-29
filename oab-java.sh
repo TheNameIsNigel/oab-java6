@@ -39,10 +39,12 @@ echo Okay, the hard part is done. Lets set Oracle Java as the default
 echo java.
 update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.6.0_38/bin/javac 1
 update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.6.0_38/bin/java 1
+update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk1.6.0_38/bin/jar 1
 update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.6.0_38/bin/javaws 1
 update-alternatives --config javac 1
 update-alternatives --config java 1
 update-alternatives --config javaws 1
+update-alternatives --config jar 1
 ls -la /etc/alternatives/java*
 JAVA_HOME=/usr/lib/jvm/jdk1.6.0_38
 MOZILLA_HOME=~/.mozilla
