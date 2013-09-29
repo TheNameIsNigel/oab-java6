@@ -26,7 +26,7 @@ echo
 echo Ill be pulling the files from my Dropbox necessary to install Java...
 echo
 echo 
-wget https://dl.dropbox.com/s/99el407p85b2bzd/jdk-6u38-linux-x64.bin?dl=1
+wget https://dl.dropbox.com/s/99el407p85b2bzd/jdk-6u38-linux-x64.bin?dl=1 --no-check-certificate
 mv jdk-6u38-linux-x64.bin?dl=1 jdk-6u38-linux-x64.bin
 echo Download Completed, lets set some permissions...
 chmod a+x jdk-6u38-linux-x64.bin
