@@ -1,5 +1,7 @@
+#!/bin/sh
+
 echo Java 6 Downloader for Linux
-echo Copyright 2013 Norris Enterprises
+echo Copyright 2014 Norris Enterprises
 echo
 echo This script was made by Ryan Norris. Please do not edit this script.
 echo By running this script, you agree with the terms and conditions set forth by
@@ -7,12 +9,17 @@ echo Oracle.
 echo
 clear
 echo Please wait while we intialize the application...
-sleep 10
+echo Checking for previous Java versions...
+ls /usr/lib/jvm >> /tmp/oabjava.sh
+cat /tmp/oabjava.sh | grep jvm*
+sudo apt-get remove openjdk*
+sudo rm -rf /usr/lib/jvm/
 echo
 clear
 echo
 echo
 echo Initializing, please wait...
+sleep 10
 echo
 echo
 echo
@@ -26,35 +33,35 @@ echo
 echo Ill be pulling the files from my Dropbox necessary to install Java...
 echo
 echo 
-wget https://dl.dropbox.com/s/99el407p85b2bzd/jdk-6u38-linux-x64.bin?dl=1 --no-check-certificate
-mv jdk-6u38-linux-x64.bin?dl=1 jdk-6u38-linux-x64.bin
+wget https://dl.dropboxusercontent.com/s/90dfp613kq2xvam/jdk-6u45-linux-x64.bin?dl=1 --no-check-certificate
+mv jdk-6u45-linux-x64.bin?dl=1 jdk-6u45-linux-x64.bin
 echo Download Completed, lets set some permissions...
-chmod a+x jdk-6u38-linux-x64.bin
+chmod a+x jdk-6u45-linux-x64.bin
 echo
 echo
 echo
 echo Lets unpack Java now...
-./jdk-6u38-linux-x64.bin
+./jdk-6u45-linux-x64.bin
 echo
 echo
 echo Java has been unpacked. Please hold on...
-mkdir -p /usr/lib/jvm/
-mv jdk1.6.0_38 /usr/lib/jvm/jdk1.6.0_38
+sudo mkdir -p /usr/lib/jvm/
+sudo mv jdk1.6.0_45 /usr/lib/jvm/jdk1.6.0_45
 echo
 echo
 echo
 echo Okay, the hard part is done. Lets set Oracle Java as the default
 echo java.
-update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.6.0_38/bin/javac 1
-update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.6.0_38/bin/java 1
-update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk1.6.0_38/bin/jar 1
-update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.6.0_38/bin/javaws 1
-update-alternatives --config javac 1
-update-alternatives --config java 1
-update-alternatives --config javaws 1
-update-alternatives --config jar 1
+sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.6.0_45/bin/javac 1
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.6.0_45/bin/java 1
+sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk1.6.0_45/bin/jar 1
+sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.6.0_45/bin/javaws 1
+sudo update-alternatives --config javac 1
+sudo update-alternatives --config java 1
+sudo update-alternatives --config javaws 1
+sudo update-alternatives --config jar 1
 ls -la /etc/alternatives/java*
-JAVA_HOME=/usr/lib/jvm/jdk1.6.0_38
+JAVA_HOME=/usr/lib/jvm/jdk1.6.0_45
 MOZILLA_HOME=~/.mozilla
 mkdir $MOZILLA_HOME/plugins
 ln -s $JAVA_HOME/jre/lib/amd64/libnpjp2.so $MOZILLA_HOME/plugins
