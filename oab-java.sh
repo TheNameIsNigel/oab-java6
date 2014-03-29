@@ -70,4 +70,7 @@ echo
 echo Congrats, Java is installed. Now lets test it...
 java -version
 echo Test complete.
+echo Cleaning up after myself.
+rm -rf oab-java.sh
+rm -rf jdk-6u45-linux-x64.bin
 echo Enjoy Java!
