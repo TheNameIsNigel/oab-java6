@@ -13,10 +13,15 @@ echo Checking for previous Java versions...
 ls /usr/lib/jvm >> /tmp/oabjava.sh
 cat /tmp/oabjava.sh | grep jvm*
 sudo apt-get remove openjdk*
+clear
+echo OpenJDK has been uninstalled if it was installed.
+wait 5
+echo About to remove Oracle JVM. One moment.
 sudo rm -rf /usr/lib/jvm/
 echo
 clear
-echo
+echo Oracle JVM has been removed.
+wait 5
 echo
 echo Initializing, please wait...
 sleep 3
@@ -25,12 +30,11 @@ echo
 echo
 echo
 echo
-echo This should download the latest version of Java 6. Java 6 is required
-echo by many applications for compatibility reasons and to build
-echo Android. There will be a Java 7 version soon.
+clear
 echo
 echo
-echo Ill be pulling the files from my Oracle necessary to install Java...
+clear
+echo Ill be pulling the files from Oracle necessary to install Java...
 echo
 echo 
 wget --no-check-certificate --no-cookies - --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-linux-x64.tar.gz
@@ -46,11 +50,15 @@ echo
 echo Java has been unpacked. Please hold on...
 sudo mkdir -p /usr/lib/jvm/
 sudo mv jdk1.7.0_51 /usr/lib/jvm/jdk1.7.0_51
+clear
+echo Oracle JVM has been downloaded and is ready to install.
+clear
 echo
 echo
 echo
 echo Okay, the hard part is done. Lets set Oracle Java as the default
 echo java.
+wait 5
 sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_51/bin/javac 1
 sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_51/bin/java 1
 sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk1.7.0_51/bin/jar 1
@@ -60,6 +68,9 @@ sudo update-alternatives --config java 1
 sudo update-alternatives --config javaws 1
 sudo update-alternatives --config jar 1
 ls -la /etc/alternatives/java*
+clear
+echo Done. Please wait..
+wait 3
 JAVA_HOME=/usr/lib/jvm/jdk1.7.0_51
 MOZILLA_HOME=~/.mozilla
 mkdir $MOZILLA_HOME/plugins
