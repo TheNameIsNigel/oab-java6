@@ -2,7 +2,7 @@ OAB-Java
 ========
 oab-java.sh v0.2.6 - Create a local 'apt' repository for Sun Java 6 and/or Oracle Java 7 packages.
 
-Copyright (c) Martin Wimpress, http://flexion.org. MIT License
+Copyright (c) Ryan Norris, http://flexion.org. MIT License.
 
 By running this script to download Java you acknowledge that you have
 read and accepted the terms of the Oracle end user license agreement.
@@ -13,7 +13,9 @@ Usage
 -----
 ::
 
-  sudo ./oab-java.sh
+  wget https://github.com/thenameisnigel/oab-java6/raw/master/oab-java7.sh | sh ./oab-java7.sh
+                                          or
+  wget https://github.com/thenameisnigel/oab-java6/raw/master/oab-java.sh | sh ./oab-java.sh
 
 Optional parameters
 
