@@ -181,7 +181,7 @@ function copyright_msg() {
     if [ "${MODE}" == "build_docs" ]; then
         echo "# OAB-Java"
     fi
-    echo `basename ${0}`" v${VER} - Create a local 'apt' repository for Sun Java 6 and/or Oracle Java 7 packages."
+    echo `basename ${0}`" v${VER} - Create a local 'apt' repository for Sun Java 6 and/or Oracle Java 8 packages."
     echo
     echo "Copyright (c) Martin Wimpress, http://flexion.org. MIT License"
     echo
@@ -219,7 +219,7 @@ function usage() {
     echo
     echo "Optional parameters"
     echo
-    echo "  * -7              : Build ``oracle-java7`` packages instead of ``sun-java6``"
+    echo "  * -8              : Build ``oracle-java8`` packages instead of ``sun-java6``"
     echo "  * -c              : Remove pre-existing packages from ``${WORK_PATH}/deb`` and sources from ``${WORK_PATH}/src``."
     echo "  * -k <gpg-key-id> : Use the specified existing key instead of generating one"
     echo "  * -s              : Skip building if the packages already exist"
@@ -278,9 +278,9 @@ function usage() {
     echo
     echo "    sudo apt-get install sun-java6-jre"
     echo
-    echo "Or if you ran the script with the ``-7`` option."
+    echo "Or if you ran the script with the ``-8`` option."
     echo
-    echo "    sudo apt-get install oracle-java7-jre"
+    echo "    sudo apt-get install oracle-java8-jre"
     echo
     echo "If you already have the *\"official\"* Ubuntu packages installed then you"
     echo "can upgrade by executing the following from a shell."
@@ -297,7 +297,7 @@ function usage() {
     echo
     echo "## Known Issues"
     echo
-    echo "  * Building Java 7 on Ubuntu Lucid 10.04 is no longer supported as the upstream scripts"
+    echo "  * Building Java 8 on Ubuntu Lucid 10.04 is no longer supported as the upstream scripts"
     echo "  require ``debhelper``>=8 which is not officially available for Lucid."
     echo "  * The Oracle download servers can be horribly slow. My script caches the downloads"
     echo "  so you only need download each file once."
@@ -368,9 +368,9 @@ OPTSTRING=7bchk:st:
 while getopts ${OPTSTRING} OPT
 do
     case ${OPT} in
-        7)
+        8)
            JAVA_DEV="oracle-java"
-           JAVA_UPSTREAM="oracle-java7"
+           JAVA_UPSTREAM="oracle-java8"
            ;;
         b) build_docs;;
         c) BUILD_CLEAN=1;;
@@ -383,8 +383,8 @@ do
 done
 shift "$(( $OPTIND - 1 ))"
 
-if [ "${JAVA_UPSTREAM}" == "oracle-java7" ] && [ "${LSB_CODE}" == "lucid" ]; then
-    ncecho " [!] Building Java 7 on Ubuntu Lucid is no longer supported "
+if [ "${JAVA_UPSTREAM}" == "oracle-java8" ] && [ "${LSB_CODE}" == "lucid" ]; then
+    ncecho " [!] Building Java 8 on Ubuntu Lucid is no longer supported "
     cecho exitting
     exit 1
 fi
@@ -412,7 +412,7 @@ if [ "${LSB_ARCH}" == "amd64" ] && [ "${JAVA_UPSTREAM}" == "sun-java6" ]; then
     fi
 fi
 
-if [ "${JAVA_UPSTREAM}" == "oracle-java7" ]; then
+if [ "${JAVA_UPSTREAM}" == "oracle-java8" ]; then
     BUILD_DEPS="${BUILD_DEPS} libxrender1"
 fi
 
@@ -472,11 +472,11 @@ ncecho " [x] Getting releases download page "
 if [ "${JAVA_UPSTREAM}" == "sun-java6" ]; then
     wget http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html -O /tmp/oab-download.html >> "$log" 2>&1 &
 else
-    wget http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html -O /tmp/oab-download.html >> "$log" 2>&1 &
+    wget http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html -O /tmp/oab-download.html >> "$log" 2>&1 &
 fi
 pid=$!;progress $pid
 
-# Set the files we're downloading since sun-java6 and oracle-java7 differ.
+# Set the files we're downloading since sun-java6 and oracle-java8 differ.
 if [ "${JAVA_UPSTREAM}" == "sun-java6" ]; then
     JAVA_EXT=.bin
 else
@@ -516,7 +516,7 @@ do
 done
 
 # Get JCE download index
-if [ $JAVA_VER == "7" ]; then
+if [ $JAVA_VER == "8" ]; then
   DOWNLOAD_INDEX_NO='432124'
 else
   DOWNLOAD_INDEX_NO='429243'
@@ -533,9 +533,9 @@ if [ "${JAVA_UPSTREAM}" == "sun-java6" ]; then
     DOWNLOAD_URL="${DOWNLOAD_PATH}${JCE_POLICY}"
     COOKIES="oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com"
 else
-    JCE_POLICY="UnlimitedJCEPolicyJDK7.zip"
+    JCE_POLICY="UnlimitedJCEPolicyJDK8.zip"
     DOWNLOAD_URL=`grep ${JCE_POLICY} /tmp/oab-download-jce.html | cut -d'{' -f2 | cut -d',' -f3 | cut -d'"' -f4`
-    COOKIES="oraclelicensejce-7-oth-JPR=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com"
+    COOKIES="oraclelicensejce-8-oth-JPR=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com"
 fi
 DOWNLOAD_SIZE=`grep ${JCE_POLICY} /tmp/oab-download-jce.html | cut -d'{' -f2 | cut -d',' -f2 | cut -d'"' -f4`
 
