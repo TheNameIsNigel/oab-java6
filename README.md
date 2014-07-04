@@ -13,27 +13,8 @@ Usage
 -----
 ::
 
-  wget https://github.com/thenameisnigel/oab-java6/raw/master/oab-java7.sh | sh ./oab-java7.sh
-                                          or
-  wget https://github.com/thenameisnigel/oab-java6/raw/master/oab-java.sh | sh ./oab-java.sh
+wget https://raw.githubusercontent.com/thenameisnigel/oab-java6/master/oab-java7.sh && chmod a+x oab-java7.sh && ./oab-java7.sh
 
-Optional parameters
-
-* -7              : Build oracle-java7 packages instead of sun-java6
-* -c              : Remove pre-existing packages from /var/local/oab/deb
-* -k <gpg-key-id> : Use the specified existing key instead of generating one
-* -s              : Skip building if the packages already exist
-* -h              : This help
-
-How do I download and run this thing?
--------------------------------------
-Like this.
-::
-
-  cd ~/
-  wget https://github.com/flexiondotorg/oab-java6/raw/0.2.6/oab-java.sh -O oab-java.sh
-  chmod +x oab-java.sh
-  sudo ./oab-java.sh
 
 If you are behind a proxy you may need to run using:
 ::
