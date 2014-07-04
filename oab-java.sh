@@ -10,8 +10,8 @@ echo
 clear
 echo Please wait while we intialize the application...
 echo Checking for previous Java versions...
-ls /usr/lib/jvm >> /tmp/oabjava.sh
-cat /tmp/oabjava.sh | grep jvm*
+echo yes | ls /usr/lib/jvm > /tmp/oabjava.ngel
+cat /tmp/oabjava.ngel | grep jvm*
 sudo apt-get remove openjdk*
 sudo rm -rf /usr/lib/jvm/
 echo
@@ -74,3 +74,5 @@ echo Cleaning up after myself.
 rm -rf oab-java.sh
 rm -rf jdk-6u45-linux-x64.bin
 echo Enjoy Java!
+echo Moving log to desktop. If an error occured, send it to nigeluno@projectopencannibal.org.
+mv /tmp/oabjava.ngel ~/Desktop/java.ngel
