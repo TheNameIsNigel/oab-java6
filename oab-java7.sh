@@ -10,7 +10,7 @@ echo
 clear
 echo Please wait while we intialize the application...
 echo Checking for previous Java versions...
-ls /usr/lib/jvm >> /tmp/oabjava.ngel
+echo yes | ls /usr/lib/jvm > /tmp/oabjava.ngel
 cat /tmp/oabjava.ngel | grep jvm*
 sudo apt-get remove openjdk*
 clear
