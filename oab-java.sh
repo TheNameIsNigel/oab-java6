@@ -1,83 +1,4 @@
-<<<<<<< HEAD
-#!/bin/sh
 
-echo Java 6 Downloader for Linux
-echo Copyright 2014 Norris Enterprises
-echo
-echo This script was made by Ryan Norris. Please do not edit this script.
-echo By running this script, you agree with the terms and conditions set forth by
-echo Oracle.
-echo
-clear
-echo Please wait while we intialize the application...
-echo Checking for previous Java versions...
-echo yes | ls /usr/lib/jvm > /tmp/oabjava.ngel
-cat /tmp/oabjava.ngel | grep jvm*
-sudo apt-get remove openjdk*
-sudo rm -rf /usr/lib/jvm/
-echo
-clear
-echo
-echo
-echo Initializing, please wait...
-sleep 10
-echo
-echo
-echo
-echo
-echo
-echo This should download the latest version of Java 6. Java 6 is required
-echo by many applications for compatibility reasons and to build
-echo Android. There will be a Java 7 version soon.
-echo
-echo
-echo Ill be pulling the files from my Dropbox necessary to install Java...
-echo
-echo 
-wget https://dl.dropboxusercontent.com/s/90dfp613kq2xvam/jdk-6u45-linux-x64.bin?dl=1 --no-check-certificate
-mv jdk-6u45-linux-x64.bin?dl=1 jdk-6u45-linux-x64.bin
-echo Download Completed, lets set some permissions...
-chmod a+x jdk-6u45-linux-x64.bin
-echo
-echo
-echo
-echo Lets unpack Java now...
-./jdk-6u45-linux-x64.bin
-echo
-echo
-echo Java has been unpacked. Please hold on...
-sudo mkdir -p /usr/lib/jvm/
-sudo mv jdk1.6.0_45 /usr/lib/jvm/jdk1.6.0_45
-echo
-echo
-echo
-echo Okay, the hard part is done. Lets set Oracle Java as the default
-echo java.
-sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.6.0_45/bin/javac 1
-sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.6.0_45/bin/java 1
-sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk1.6.0_45/bin/jar 1
-sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.6.0_45/bin/javaws 1
-sudo update-alternatives --config javac 1
-sudo update-alternatives --config java 1
-sudo update-alternatives --config javaws 1
-sudo update-alternatives --config jar 1
-ls -la /etc/alternatives/java*
-JAVA_HOME=/usr/lib/jvm/jdk1.6.0_45
-MOZILLA_HOME=~/.mozilla
-mkdir $MOZILLA_HOME/plugins
-ln -s $JAVA_HOME/jre/lib/amd64/libnpjp2.so $MOZILLA_HOME/plugins
-echo
-echo
-echo Congrats, Java is installed. Now lets test it...
-java -version
-echo Test complete.
-echo Cleaning up after myself.
-rm -rf oab-java.sh
-rm -rf jdk-6u45-linux-x64.bin
-echo Enjoy Java!
-echo Moving log to desktop. If an error occured, send it to nigeluno@projectopencannibal.org.
-mv /tmp/oabjava.ngel ~/Desktop/java.ngel
-=======
 #!/usr/bin/env bash
 # Copyright (c) Martin Wimpress
 # http://flexion.org/
@@ -89,7 +10,7 @@ mv /tmp/oabjava.ngel ~/Desktop/java.ngel
 #  - http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html
 
 # Version
-VER="0.3.1-dev"
+VER="0.3.2-mg;"
 
 # check the --fqdn version, if it's absent fall back to hostname
 HOSTNAME=$(hostname --fqdn 2>/dev/null)
@@ -261,7 +182,11 @@ function copyright_msg() {
     if [ "${MODE}" == "build_docs" ]; then
         echo "# OAB-Java"
     fi
+<<<<<<< HEAD
     echo `basename ${0}`" v${VER} - Create a local 'apt' repository for Sun Java 6 and/or Oracle Java 7 and/or Oracle Java 8 packages."
+=======
+    echo `basename ${0}`" v${VER} - Create a local 'apt' repository for Sun Java 6 and/or Oracle Java 7 or 8 packages."
+>>>>>>> 3351107789fe04887eb31664f1f34bbfe2ec1649
     echo
     echo "Copyright (c) Martin Wimpress, http://flexion.org. MIT License"
     echo
@@ -458,6 +383,10 @@ do
            JAVA_DEV="oracle-java"
            JAVA_UPSTREAM="oracle-java${OPT}"
            ;;
+        8)
+           JAVA_DEV="oracle-java"
+           JAVA_UPSTREAM="oracle-java8"
+           ;;
         b) build_docs;;
         c) BUILD_CLEAN=1;;
         h) usage;;
@@ -469,8 +398,13 @@ do
 done
 shift "$(( $OPTIND - 1 ))"
 
+<<<<<<< HEAD
 if [ "${JAVA_DEV}" == "oracle-java" ] && [ "${LSB_CODE}" == "lucid" ]; then
     ncecho " [!] Building Java 7 or 8 on Ubuntu Lucid is no longer supported "
+=======
+if [ "${JAVA_UPSTREAM}" == "oracle-java7" -o "${JAVA_UPSTREAM}" == "oracle-java8" ] && [ "${LSB_CODE}" == "lucid" ]; then
+    ncecho " [!] Building Java 7 on Ubuntu Lucid is no longer supported "
+>>>>>>> 3351107789fe04887eb31664f1f34bbfe2ec1649
     cecho exitting
     exit 1
 fi
@@ -498,12 +432,17 @@ if [ "${LSB_ARCH}" == "amd64" ] && [ "${JAVA_UPSTREAM}" == "sun-java6" ]; then
     fi
 fi
 
+<<<<<<< HEAD
 if [ "${JAVA_UPSTREAM}" == "oracle-java8" ]; then
     BUILD_DEPS="${BUILD_DEPS} libx11-6 libxext6"
 fi
 
 if [ "${JAVA_DEV}" == "oracle-java" ]; then
     BUILD_DEPS="${BUILD_DEPS} libxrender1 curl"
+=======
+if [ "${JAVA_UPSTREAM}" == "oracle-java7" -o "${JAVA_UPSTREAM}" == "oracle-java8" ]; then
+    BUILD_DEPS="${BUILD_DEPS} libxrender1"
+>>>>>>> 3351107789fe04887eb31664f1f34bbfe2ec1649
 fi
 
 # Install the Java build requirements
@@ -557,6 +496,11 @@ DEB_URGENCY=`head -n1 ${WORK_PATH}/src/debian/changelog | cut -d'=' -f2`
 # Determine the currently supported Java version and update
 JAVA_VER=`echo ${DEB_VERSION} | cut -d'.' -f1`
 JAVA_UPD=`echo ${DEB_VERSION} | cut -d'.' -f2 | cut -d'-' -f1`
+if [ "${JAVA_UPD}" == "0" ]; then
+    JAVA_UPD=""
+else
+    JAVA_UPD="u${JAVA_UPD}"
+fi
 
 # The first Java8 release doesn't have a u[0-9]* part
 if [ "${JAVA_UPD}" == "0" ]; then
@@ -605,6 +549,12 @@ do
         DOWNLOAD_URL=`grep ${JAVA_BIN} /tmp/oab-download.html | cut -d'{' -f2 | cut -d',' -f3 | cut -d'"' -f4`
     fi
     DOWNLOAD_SIZE=`grep ${JAVA_BIN} /tmp/oab-download.html | cut -d'{' -f2 | cut -d',' -f2 | cut -d':' -f2 | sed 's/"//g'`
+<<<<<<< HEAD
+=======
+    # Cookies required for download
+    timestamp=$((`date +%s` + 180000))
+    COOKIES="oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com;s_cc=true;s_sq=%5B%5BB%5D%5D;s_nr=$timestamp"
+>>>>>>> 3351107789fe04887eb31664f1f34bbfe2ec1649
 
     ncecho " [x] Downloading ${JAVA_BIN} : ${DOWNLOAD_SIZE} "
     wget --no-check-certificate --header="Cookie: ${COOKIES}" -c "${DOWNLOAD_URL}" -O ${WORK_PATH}/pkg/${JAVA_BIN} >> "$log" 2>&1 &
@@ -616,10 +566,16 @@ do
 done
 
 # Get JCE download index
+<<<<<<< HEAD
 if [ "${JAVA_VER}" == "8" ]; then
   DOWNLOAD_INDEX_NO='2133166'
   DOWNLOAD_INDEX_JCE='jce'
 elif [ "${JAVA_VER}" == "7" ]; then
+=======
+if [ $JAVA_VER == "8" ]; then
+  DOWNLOAD_INDEX_NO='2133166'
+elif [ $JAVA_VER == "7" ]; then
+>>>>>>> 3351107789fe04887eb31664f1f34bbfe2ec1649
   DOWNLOAD_INDEX_NO='432124'
   DOWNLOAD_INDEX_JCE='jce-'
 else
@@ -627,7 +583,15 @@ else
   DOWNLOAD_INDEX_JCE='jce-'
 fi
 
+<<<<<<< HEAD
 DOWNLOAD_INDEX="technetwork/java/javase/downloads/${DOWNLOAD_INDEX_JCE}${JAVA_VER}-download-${DOWNLOAD_INDEX_NO}.html"
+=======
+if [ "${JAVA_VER}" == "8" ]; then
+    DOWNLOAD_INDEX="technetwork/java/javase/downloads/jce${JAVA_VER}-download-${DOWNLOAD_INDEX_NO}.html"
+else
+    DOWNLOAD_INDEX="technetwork/java/javase/downloads/jce-${JAVA_VER}-download-${DOWNLOAD_INDEX_NO}.html"
+fi
+>>>>>>> 3351107789fe04887eb31664f1f34bbfe2ec1649
 wget http://www.oracle.com/${DOWNLOAD_INDEX} -O /tmp/oab-download-jce.html >> "$log" 2>&1 &
 pid=$!;progress $pid
 
@@ -636,6 +600,7 @@ if [ "${JAVA_UPSTREAM}" == "sun-java6" ]; then
     JCE_POLICY="jce_policy-6.zip"
     DOWNLOAD_PATH=`grep "jce[^']*-6-oth-JPR'\]\['path" /tmp/oab-download-jce.html | cut -d'=' -f2 | cut -d'"' -f2`
     DOWNLOAD_URL="${DOWNLOAD_PATH}${JCE_POLICY}"
+<<<<<<< HEAD
 elif [ "${JAVA_DEV}" == "oracle-java" ]; then
     if [ "${JAVA_UPSTREAM}" == "oracle-java7" ]; then
         JCE_POLICY="UnlimitedJCEPolicyJDK7.zip"
@@ -643,6 +608,17 @@ elif [ "${JAVA_DEV}" == "oracle-java" ]; then
         JCE_POLICY="jce_policy-8.zip"
     fi
     DOWNLOAD_URL=`grep ${JCE_POLICY} /tmp/oab-download-jce.html | cut -d'{' -f2 | cut -d',' -f3 | cut -d'"' -f4`
+=======
+    COOKIES="oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com"
+elif [ "${JAVA_UPSTREAM}" == "oracle-java7" ]; then
+    JCE_POLICY="UnlimitedJCEPolicyJDK7.zip"
+    DOWNLOAD_URL=`grep ${JCE_POLICY} /tmp/oab-download-jce.html | cut -d'{' -f2 | cut -d',' -f3 | cut -d'"' -f4`
+    COOKIES="oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com"
+else
+    JCE_POLICY="jce_policy-8.zip"
+    DOWNLOAD_URL=`grep ${JCE_POLICY} /tmp/oab-download-jce.html | cut -d'{' -f2 | cut -d',' -f3 | cut -d'"' -f4`
+    COOKIES="oraclelicense=accept-securebackup-cookie"
+>>>>>>> 3351107789fe04887eb31664f1f34bbfe2ec1649
 fi
 DOWNLOAD_SIZE=`grep ${JCE_POLICY} /tmp/oab-download-jce.html | cut -d'{' -f2 | cut -d',' -f2 | cut -d'"' -f4`
 
