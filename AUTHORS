@@ -1,4 +1,35 @@
+<<<<<<< HEAD
 Credits
 =======
 
 This package is written and maintained by Ryan Norris, <r.nigel.norris@gmail.com>
+=======
+
+# Credits
+
+This package is written and maintained by Martin Wimpress, <code@flexion.org>
+
+Other contributors, listed alphabetically, are:
+
+  * Björgvin Ragnarsson
+  * David Kovach
+  * Derek Chen-Becker
+  * Eshwar Andhavarapu
+  * Greg Swallow
+  * Hannes Schmidt
+  * Ihor Kaharlichenko
+  * Jameson J Lee
+  * Jonathan Harker
+  * Ladios Jonquil
+  * Martin Polden
+  * Miah Johnson
+  * Michał Kowalczuk
+  * Naoya Nakazawa
+  * onlymostlydead
+  * Paul Scott
+  * Peter Leibiger
+  * Robert Pendell
+  * Thorsten Möllers
+
+Many thanks for all contributions!
+>>>>>>> 5c4d3b1f799a35d68a887b8dd9bc0391809ead04
